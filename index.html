@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DICTIONARY</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="./book-icon-png-free.png" type="image/x-icon">
+     
+</head>
+<body>
+    
+
+    <div class="card">
+        
+        <h1 class="heading">DICTIONARY</h1>
+
+        <div class="search">
+            <input type="text" id="word" class="search-bar" placeholder="Search Word">
+            <button onclick="search()" >
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1.5em" width="2em" xmlns="http://www.w3.org/2000/svg"><path d="M10,18c1.846,0,3.543-0.635,4.897-1.688l4.396,4.396l1.414-1.414l-4.396-4.396C17.365,13.543,18,11.846,18,10 c0-4.411-3.589-8-8-8s-8,3.589-8,8S5.589,18,10,18z M10,4c3.309,0,6,2.691,6,6s-2.691,6-6,6s-6-2.691-6-6S6.691,4,10,4z"></path></svg>
+            </button>
+        </div>
+        
+        <!-- result here -->
+        <div id="result" class="result">
+            <!-- <ul>
+                <li><b>Word:</b> ${word}</li>
+                <li><b>Phonetic:</b> ${phonetic}</li>
+                <li><b>Definition:</b> ${definition}</li>
+                <li><b>Part of speech:</b> ${partOfSpeech}</li>
+            </ul> -->
+        </div>
+
+    </div>
+    
+</body>
+<script>
+    
+    function search(){
+        word_search= word.value;
+        console.log(word_search);
+
+        fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word_search}`)
+        .then(res=>res.json())
+         .then(data=> displayData(data)) //2nd function call
+
+        .catch(error=>{
+            alert('Failed to fetch word data')
+        })
+    }
+
+    //displaying data
+    function displayData(wordTyped){
+
+        phonetic = wordTyped[0].phonetic ;
+        definition = wordTyped[0].meanings[0].definitions[0].definition;
+        partOfSpeech = wordTyped[0].meanings[0].partOfSpeech;
+        word = wordTyped[0].word;
+       
+
+        let htmlData = `
+            <div id="result" class="result">
+                <ul>
+                    <li><b class="result_si">Word:</b> ${word}</li>
+                    <li> <b class="result_si">Phonetic:</b> ${phonetic}</li>
+                    <li><b class="result_si">Definition:</b> ${definition}</li>
+                    <li><b class="result_si">Part of speech:</b> ${partOfSpeech}</li>
+                </ul>
+            </div>
+        `
+        result.innerHTML=htmlData;
+
+    }
+</script>
+</html>

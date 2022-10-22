@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Merriweather:ital,wght@1,300&family=Red+Hat+Display:ital@1&display=swap');
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: #444;
+    background-image: url('./dicti.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:center center;
+    font-size: 120%;
+  }
+  
+  .card {
+    background: #000000d0;
+    opacity: 1.0;
+    color: white;
+    padding: 2em;
+    border-radius: 30px;
+    width: 100%;
+    max-width: 420px;
+    margin: 1rem;
+  }
+
+  .heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: burlywood;
+    font-family: 'Bebas Neue', cursive;
+    font-family: 'Merriweather', serif;
+    font-size: 3rem;
+  }
+  
+  .search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  button {
+    margin: 0.5rem;
+    border-radius: 50%;
+    border: none;
+    width: 42px;
+    height: 42px;
+    background: #7c7c7c2b;
+    color: white;
+  }
+  
+  button:hover {
+    background: #7c7c7c7b;
+  }
+  
+  input.search-bar {
+    border: none;
+    padding: 0.5em;
+    border-radius: 24px;
+    outline: none;
+    width: calc(100% - 80px);
+    background: #7c7c7c2b;
+    color: white;
+    font-size: 100%;
+    font-family: inherit;
+  }
+  
+  
+  
+  .result {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .result_si{
+    color: burlywood;
+    font-size: 1.3rem;
+  }
+
+  li{
+    list-style: none;
+    line-height: 2.5rem;
+  }
+  
